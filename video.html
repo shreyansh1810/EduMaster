@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LearnHub - Video Player</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .video-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    iframe {
+      width: 90%;
+      max-width: 900px;
+      height: 500px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+
+    .back-button {
+      margin-top: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <a href="index.html"><img src="images/ChatGPT Image Jun 24, 2025, 09_57_09 PM.png" alt="LearnHub Logo"></a>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="features.html">Features</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+</nav>
+
+<div class="video-container">
+  <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+  <a class="back-button" href="courses.html">← Back to Courses</a>
+</div>
+
+<script>
+  // Get video ID from query parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const videoID = urlParams.get('v');
+
+  if (videoID) {
+    document.getElementById('videoFrame').src = `https://www.youtube.com/embed/${videoID}`;
+  } else {
+    document.getElementById('videoFrame').src = '';
+    document.querySelector('.video-container').innerHTML = "<p>Invalid video link</p>";
+  }
+</script>
+
+</body>
+</html>
